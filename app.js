@@ -46,5 +46,27 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/add', (req, res) => {
+    res.render(
+        'user_add', {
+        title: 'Add a User'
+    });
+});
+
+app.post('/save', (req, res) => {
+    let data = {
+        name: req.body.name,
+        email: req.body.email,
+        phone_no: req.body.phone
+    };
+    let sql = 'INSERT INTO users SET ?';
+    let query = connection.query(sql, data, (err, result) => {
+
+        if (err) throw err;
+
+        res.redirect('/');
+    });
+});
+
 // Run the server
 app.listen(process.env.PORT || 3000, () => console.log('The server is running on port 3000'));
