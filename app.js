@@ -97,5 +97,17 @@ app.post('/update', (req, res) => {
     });
 });
 
+// Delete
+app.get('/delete/:userId', (req, res) => {
+    const userId = req.params.userId;
+    let sql = `DELETE FROM users WHERE id = ${userId}`;
+    let query = connection.query(sql, (err, result) => {
+
+        if (err) throw err;
+
+        res.redirect('/');
+    });
+});
+
 // Run the server
 app.listen(process.env.PORT || 3000, () => console.log('The server is running on port 3000'));
