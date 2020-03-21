@@ -6,7 +6,13 @@ const mysql = require('mysql');
 const app = express();
 const config = require('./config');
 
+// Set the views file
+app.set('views', path.join(__dirname, 'views'));
+
 // App setup
+app.set('view engine', 'ejs');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Database connection
 const connection = mysql.createConnection({
@@ -27,7 +33,11 @@ connection.connect((error) => {
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('Home!');
+    res.render(
+        'user_index', {
+        title: 'CRUD using Node.js, Express, and MySQL'
+    }
+    );
 });
 
 // Run the server
