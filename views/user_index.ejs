@@ -1,11 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Inline Scripts -->
+    <script>
+        $(document).ready(function () {
+            $('#usersTable').DataTable();
+        });
+    </script>
 </head>
+
 <body>
-    <h1><%= title %></h1>
+    <div class="container">
+        <h1><%= title %></h1>
+
+        <table id="usersTable" class="table table-sm table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Email
+                    </th>
+                    <th scope="col">
+                        Phone
+                    </th>
+                    <th scope="col">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <% users.forEach((user) => { %>
+                <tr>
+                    <td>
+                        <%= user.name %>
+                    </td>
+    
+                    <td>
+                        <%= user.email %>
+                    </td>
+    
+                    <td>
+                        <%= user.phone_no %>
+                    </td>
+    
+                    <td>
+                        <button class="btn btn-small btn-primary">
+                            Edit
+                        </button>
+                        <button class="btn btn-small btn-danger">
+                            Delete
+                        </button>
+                    </td>
+    
+                </tr>
+    
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
 </body>
+
 </html>
