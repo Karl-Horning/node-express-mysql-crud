@@ -46,6 +46,7 @@ app.get('/', (req, res) => {
     });
 });
 
+// Create
 app.get('/add', (req, res) => {
     res.render(
         'user_add', {
@@ -61,6 +62,34 @@ app.post('/save', (req, res) => {
     };
     let sql = 'INSERT INTO users SET ?';
     let query = connection.query(sql, data, (err, result) => {
+
+        if (err) throw err;
+
+        res.redirect('/');
+    });
+});
+
+// Update
+app.get('/edit/:userId', (req, res) => {
+    const userId = req.params.userId;
+    let sql = `SELECT * FROM users WHERE id = ${userId}`;
+    let query = connection.query(sql, (err, result) => {
+
+        if (err) throw err;
+
+        res.render(
+            'user_edit', {
+            title: 'Edit a User',
+            user: result[0]
+        });
+    });
+});
+
+
+app.post('/update', (req, res) => {
+    const userId = req.body.id;
+    let sql = `UPDATE users SET name = '${req.body.name}', email = '${req.body.email}', phone_no = '${req.body.phone}' WHERE ID = ${req.body.id};`;
+    let query = connection.query(sql, (err, result) => {
 
         if (err) throw err;
 
