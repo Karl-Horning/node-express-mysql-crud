@@ -1,0 +1,25 @@
+{
+  "name": "express-mysql-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karl-Horning/node-express-mysql-crud.git"
+  },
+  "author": "Karl Horning",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Karl-Horning/node-express-mysql-crud/issues"
+  },
+  "homepage": "https://github.com/Karl-Horning/node-express-mysql-crud#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
