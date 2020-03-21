@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Inline Scripts -->
+    <script>
+        $(document).ready(function () {
+            $('#usersTable').DataTable();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1><%= title %></h1>
+
+        <form action="/save" method="post">
+            <fieldset class="form-group">
+                <label for="name">Name:</label>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Enter a Name" required>
+            </fieldset>
+            
+            <fieldset class="form-group">
+                <label for="email">Email:</label>
+                <input class="form-control" type="email" name="email" id="email" placeholder="Enter an Email" required>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label for="phone">Phone:</label>
+                <input class="form-control" type="tel" name="phone" id="phone" placeholder="Enter Phone Number" required>
+            </fieldset>
+
+            <button class="btn btn-success mt-3" type="submit">Add User</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
