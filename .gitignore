@@ -33,6 +33,7 @@ Temporary Items
 # Environment variables and setup
 .flaskenv
 config.py
+config.js
 
 ### venv ###
 # Virtualenv
