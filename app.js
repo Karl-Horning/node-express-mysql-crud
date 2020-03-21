@@ -33,11 +33,17 @@ connection.connect((error) => {
 
 // Routes
 app.get('/', (req, res) => {
-    res.render(
-        'user_index', {
-        title: 'CRUD using Node.js, Express, and MySQL'
-    }
-    );
+    let sql = 'SELECT * FROM users';
+    let query = connection.query(sql, (err, rows) => {
+
+        if (err) throw err;
+
+        res.render(
+            'user_index', {
+            title: 'CRUD using Node.js, Express, and MySQL',
+            users: rows
+        });
+    });
 });
 
 // Run the server
